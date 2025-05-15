@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HB</title>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      overflow: hidden;
+    }
+
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: Arial, sans-serif;
+      position: relative;
+      background: url('https://d2w9rnfcy7mm78.cloudfront.net/7776070/original_7568d7142fbdb60f29dd482a9961f13a.gif?1593042937') no-repeat center center fixed;
+      background-size: cover;
+    }
+
+    .container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+      gap: 20px;
+      z-index: 1;
+      padding: 20px;
+      width: 100%;
+      max-width: 600px;
+      box-sizing: border-box;
+    }
+
+    .box {
+      aspect-ratio: 1 / 1;
+      background: rgba(255, 255, 255, 0.3);
+      border-radius: 4px;
+      cursor: pointer;
+      transition: transform 0.4s ease, box-shadow 0.4s ease, background 0.4s ease;
+      position: relative;
+      overflow: hidden;
+      width: 100%;
+    }
+
+    .box::before {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 50%;
+      top: 0;
+      left: 0;
+      background: rgba(255, 255, 255, 0.4);
+      transition: transform 0.5s ease;
+      transform-origin: top;
+      z-index: 2;
+    }
+
+    .box:hover::before {
+      transform: rotateX(120deg);
+    }
+
+    .box:hover {
+      background: linear-gradient(145deg, #a86ed6, #da9cf5);
+    }
+
+    .box .bow {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 28px;
+      z-index: 3;
+      pointer-events: none;
+    }
+
+    .modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.6);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      display: none;
+      z-index: 999;
+      padding: 10px;
+      box-sizing: border-box;
+    }
+
+    .modal-content {
+      background: white;
+      padding: 20px;
+      border-radius: 20px;
+      font-size: 18px;
+      text-align: center;
+      max-width: 90vw;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    }
+
+    .modal.show {
+      display: flex;
+    }
+
+    @media (max-height: 500px) {
+      body {
+        align-items: flex-start;
+        padding-top: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="box" onclick="showMessage('Ще більше класних та радісних фото до твого портфоліо, які б тобі дуже подобалися)')">
+      <div class="bow">🎀</div>
+    </div>
+    <div class="box" onclick="showMessage('Шоб кожен твій день був наповнений світлом і радістю, а щастя супроводжувало тебе в кожній миті життя!')">
+      <div class="bow">🎀</div>
+    </div>
+    <div class="box" onclick="showMessage('Ти вже і так мудра і багато знаєш)) але хай продовжується твій ріст і рух до твоїх мрій!')">
+      <div class="bow">🎀</div>
+    </div>
+    <div class="box" onclick="showMessage('Міцного кохання, тепла у серці і взаємної підтримки. Нехай любов оточує тебе кожного дня і надихає на нові звершення!')">
+      <div class="bow">🎀</div>
+    </div>
+  </div>
+
+  <div class="modal" id="modal" onclick="hideModal()">
+    <div class="modal-content" id="modal-content"></div>
+  </div>
+
+  <script>
+    function showMessage(message) {
+      const modal = document.getElementById('modal');
+      const content = document.getElementById('modal-content');
+      content.textContent = message;
+      modal.classList.add('show');
+    }
+
+    function hideModal() {
+      document.getElementById('modal').classList.remove('show');
+    }
+  </script>
+</body>
+</html>
